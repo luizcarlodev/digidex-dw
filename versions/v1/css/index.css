@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/* HEADER */
 header {
     width: 100%;
     height: 150px;
@@ -12,7 +13,6 @@ header {
 .counteiner-header {
     width: 100%;
     height: 100%;
-    background-color: rgb(204, 133, 133);
     display: flex;
     justify-content: center ;
 }
@@ -20,10 +20,74 @@ header {
 .count-header-cabecario {
     width: 80%;
     height: 100%;
-    background-color: rgb(201, 20, 20);
+    background-color: rgb(252, 232, 177);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* BODY */
+.counteiner-body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
 
+.counteiner-conteudo {
+    width: 80%;
+    height: 100%;
+    background-color: rgb(79, 175, 79);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counteiner-conteudo2 {
+    width: 80%;
+    height: 80%;
+    background-color: rgb(65, 106, 184);
+}
+
+.counteiner-ferramentas {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(190, 253, 178);
+}
+
+.counteiner-cards {
+    width: 100%;
+    height: calc(100% - 100px);
+    background-color: rgb(236, 215, 157);
+}
+
+/* FOOTER */
+footer {
+    width: 100%;
+    height: 200px;
+}
+
+.counteiner-footer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.conteudo-footer {
+    width: 80%;
+    height: 100%;
+    background-color: gray;
+}
+
+/* Celular */
+@media (max-width: 769px) {
+    .count-header-cabecario {
+        width: 100%;
+}
+
+    .counteiner-conteudo {
+        width: 100%;
+}
+
+}
