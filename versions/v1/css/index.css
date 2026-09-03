@@ -10,7 +10,7 @@ header {
     height: 150px;
 }
 
-.counteiner-header {
+.container-header {
     width: 100%;
     height: 100%;
     display: flex;
@@ -27,14 +27,14 @@ header {
 }
 
 /* BODY */
-.counteiner-body {
+.container-body {
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
 }
 
-.counteiner-conteudo {
+.container-conteudo {
     width: 100%;
     height: 100%;
     background-color: lightgray;
@@ -43,13 +43,13 @@ header {
     align-items: center;
 }
 
-.counteiner-conteudo2 {
+.container-conteudo2 {
     width: 80%;
     height: 80%;
     background-color: rgb(65, 106, 184);
 }
 
-.counteiner-ferramentas {
+.container-ferramentas form {
     width: 100%;
     height: 100px;
     background-color: rgb(1, 92, 150);
@@ -58,10 +58,35 @@ header {
     align-items: center;
 }
 
-.counteiner-cards {
+/* PC */
+.container-cards {
     width: 100%;
     height: calc(100% - 100px);
     background-color: lightcyan;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .container-cards {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    .container-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.card {
+    width: 80%;
+    height: 80%;
+    background-color: rgb(106, 165, 202);
 }
 
 /* FOOTER */
@@ -70,7 +95,7 @@ footer {
     height: 200px;
 }
 
-.counteiner-footer {
+.container-footer {
     width: 100%;
     height: 100%;
     display: flex;
