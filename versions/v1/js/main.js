@@ -21,6 +21,7 @@ function renderizarDigimons(listaDigimons) {
 
         card.classList.add("digimon-card");
         card.href = `detalhe.html?id=${digimon.id}`;
+        card.title = digimon.name;
 
         card.innerHTML = `
             <img
