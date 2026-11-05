@@ -4,6 +4,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>DIGIDEX - Detalhes</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@1,700&display=swap"
+            rel="stylesheet"
+        />
+
         <link rel="stylesheet" href="css/detalhe.css" />
     </head>
     <body>
@@ -18,37 +26,53 @@
 
         <main>
             <div class="container__body">
-                <div class="container-btn-index">
-                    <div class="background-btn-index">
-                        <a id="btn-volta-index" href="index.html"
-                            ><img
-                                class="btn-volta-index-img"
-                                src="assets/ui/btn-anterior.png"
-                                alt="btn-anterior"
-                        /></a>
-                    </div>
-                </div>
-                <div class="container__conteudo">
-                    <div id="descricao__digimon">
-                        <div id="detalhe"></div>
+                <section class="SHeader">
+                    <h1 id="nome"></h1>
+                    <p id="numero"></p>
+                </section>
 
-                        <div class="navegacao">
-                            <button id="btn-anterior">
-                                <img
-                                    src="assets/ui/btn-anterior.png"
-                                    alt="btn-anterior"
-                                />
-                            </button>
-                            <button id="btn-proximo">
-                                <img
-                                    src="assets/ui/btn-proximo.png"
-                                    alt="btn-proximo"
-                                />
-                            </button>
+                <section class="SInfos">
+                    <img id="imagem" src="" alt="" />
+                    <dl>
+                        <div>
+                            <dt>tipo</dt>
+                            <dd id="tipo"></dd>
                         </div>
-                    </div>
-                </div>
+                        <div>
+                            <dt>nível</dt>
+                            <dd id="nivel"></dd>
+                        </div>
+                        <div>
+                            <dt>atributo</dt>
+                            <dd id="atributo"></dd>
+                        </div>
+                        <div>
+                            <dt>área</dt>
+                            <dd id="area"></dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="SDescricao">
+                    <h2>Descrição</h2>
+                    <p id="descricao"></p>
+                </section>
+
+                <section class="SSkills">
+                    <h2>Habilidades</h2>
+                    <ul id="habilidades"></ul>
+                </section>
+
+                <section class="SBtn-index">
+                    <a class="btn-voltar" href="index.html">Voltar</a>
+                </section>
             </div>
+
+            <nav class="navegacao" aria-label="Navegar entre Digimons">
+                <button id="btn-anterior" type="button">&lt;</button>
+                <span id="id-atual"></span>
+                <button id="btn-proximo" type="button">&gt;</button>
+            </nav>
         </main>
 
         <footer>
@@ -59,7 +83,6 @@
             </div>
         </footer>
 
-        <script src="js/data/digimons.js"></script>
         <script src="js/detalhe.js"></script>
     </body>
 </html>

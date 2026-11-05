@@ -24,11 +24,102 @@ body {
     height: 300px;
 }
 
-/* ==================== ÁREA ==================== */
+/* ==================== PÁGINA (antigo .container__body) ==================== */
 
-.area img {
-    width: 24px;
-    height: 24px;
+main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* card em cima, navegação embaixo */
+    align-items: center;
+}
+
+/* ==================== CARD (antigo .container__conteudo + #descricao__digimon) ==================== */
+
+.container__body {
+    width: 80%;
+    min-height: 50vh;
+    border: 2px solid rgb(1, 92, 150);
+    border-radius: 10px;
+    background-color: rgb(138, 201, 232);
+    padding: 0 0px;
+}
+
+/* ==================== SEÇÕES DO CARD ==================== */
+
+.SHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 2px solid rgb(1, 92, 150);
+}
+
+#nome {
+    font-family: "Chakra Petch", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    color: rgb(217, 250, 255);
+    -webkit-text-stroke: 3px rgb(6, 59, 92);
+    paint-order: stroke fill;
+    margin-left: 10px;
+}
+
+#numero {
+    font-family: "Chakra Petch", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    color: rgb(217, 250, 255);
+    -webkit-text-stroke: 3px rgb(6, 59, 92);
+    paint-order: stroke fill;
+    margin-right: 10px;
+}
+
+.SInfos {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid rgb(1, 92, 150);
+}
+
+.SInfos img {
+    border: 2px solid rgb(1, 92, 150);
+}
+
+.SInfos dl {
+    width: 100%;
+}
+
+.SInfos dl div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.SInfos dt {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.SDescricao {
+    width: 100%;
+    border-bottom: 2px solid rgb(1, 92, 150);
+}
+
+.SSkills {
+    width: 100%;
+    border-bottom: 2px solid rgb(1, 92, 150);
+}
+
+.SSkills ul {
+    list-style: none;
+}
+
+.SBtn-index {
+    width: 100%;
+}
+
+.btn-voltar {
+    width: 100%;
 }
 
 /* ==================== NAVEGAÇÃO ==================== */
@@ -39,59 +130,9 @@ body {
     border: none;
 }
 
-.navegacao button img {
-    width: 64px;
-}
-
-/* ==================== BOTÃO VOLTAR ==================== */
-
-.container-btn-index {
-    width: 100px;
-    height: 100%;
-}
-
-.background-btn-index {
-    width: 100px;
-    height: 100px;
-    border-radius: 100% 0 0 100%;
-    background-color: rgb(6, 59, 92);
-}
-
-#btn-volta-index {
-    width: 64px;
-    background: none;
-    border: none;
-}
-
-.btn-volta-index-img {
-    height: 64px;
-}
-
-/* ==================== DESCRIÇÃO DO DIGIMON ==================== */
-
-.container__body {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-}
-
-.container__conteudo {
-    width: 80%;
-    min-height: 50vh;
-    border: 2px solid rgb(1, 92, 150);
-}
-
-#descricao__digimon {
-    width: 100%; /* % com base em class="container-cards" */
-    background-color: rgb(138, 201, 232);
-    padding: 0 10px;
-}
-
-#detalhe img {
-    border: 2px solid rgb(1, 92, 150);
-}
+/* #id-atual {
+    
+} */
 
 /* ==================== FOOTER ==================== */
 

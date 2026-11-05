@@ -1,10 +1,12 @@
 const lista = document.querySelector("#lista-digimons");
 const busca = document.querySelector("#busca");
-let fonteDigimons = digimons;
+const btnSurpreenda = document.querySelector("#btn-surpreenda");
+let fonteDigimons = [];
 
 let paginaAtual = 0;
 const tamanhoPagina = 20;
 let totalPaginas = 1;
+let totalDigimons = 1000;
 let termoBusca = "";
 
 const botaoAnterior = document.querySelector("#pagina-anterior");
@@ -18,7 +20,7 @@ function renderizarDigimons(listaDigimons) {
         const card = document.createElement("a");
 
         card.classList.add("digimon-card");
-        card.href = `detalhe.html?nome=${encodeURIComponent(digimon.name)}`;
+        card.href = `detalhe.html?id=${digimon.id}`;
 
         card.innerHTML = `
             <img
@@ -44,6 +46,11 @@ busca.addEventListener("input", () => {
         return;
     }
 
+    if (/^\d+$/.test(termoBusca)) {
+        buscarDigimonPorId(termoBusca);
+        return;
+    }
+
     buscarDigimonsAPI(termoBusca);
 });
 
@@ -61,6 +68,7 @@ async function carregarDigimonsAPI() {
 
         fonteDigimons = dados.content;
         totalPaginas = dados.pageable.totalPages;
+        totalDigimons = dados.pageable.totalElements ?? totalDigimons;
 
         renderizarDigimons(fonteDigimons);
 
@@ -70,8 +78,7 @@ async function carregarDigimonsAPI() {
         botaoProxima.disabled = paginaAtual >= totalPaginas - 1;
     } catch (erro) {
         console.error("Não foi possível carregar a API:", erro);
-
-        renderizarDigimons(fonteDigimons);
+        lista.innerHTML = "<p>Não foi possível carregar os Digimons.</p>";
     }
 }
 
@@ -101,6 +108,33 @@ async function buscarDigimonsAPI(termo) {
     }
 }
 
+async function buscarDigimonPorId(id) {
+    try {
+        const resposta = await fetch(
+            `https://digi-api.com/api/v1/digimon/${id}`,
+        );
+
+        if (!resposta.ok) {
+            throw new Error(`Digimon ${id} não encontrado`);
+        }
+
+        const d = await resposta.json();
+
+        renderizarDigimons([
+            { id: d.id, name: d.name, image: d.images?.[0]?.href ?? "" },
+        ]);
+
+        textoPagina.textContent = "Resultado por ID";
+        botaoAnterior.disabled = true;
+        botaoProxima.disabled = true;
+    } catch (erro) {
+        console.error(erro);
+        lista.innerHTML = "<p>Nenhum Digimon encontrado com esse ID.</p>";
+        botaoAnterior.disabled = true;
+        botaoProxima.disabled = true;
+    }
+}
+
 botaoAnterior.addEventListener("click", () => {
     if (paginaAtual > 0) {
         paginaAtual--;
@@ -123,3 +157,26 @@ botaoProxima.addEventListener("click", () => {
         }
     }
 });
+
+async function sortearDigimon() {
+    for (let tentativa = 0; tentativa < 5; tentativa++) {
+        const id = Math.floor(Math.random() * totalDigimons) + 1;
+
+        try {
+            const resposta = await fetch(
+                `https://digi-api.com/api/v1/digimon/${id}`,
+            );
+
+            if (resposta.ok) {
+                window.location.href = `detalhe.html?id=${id}`;
+                return;
+            }
+        } catch (erro) {
+            console.error(erro);
+        }
+    }
+
+    lista.innerHTML = "<p>Não foi possível sortear um Digimon agora.</p>";
+}
+
+btnSurpreenda.addEventListener("click", sortearDigimon);
