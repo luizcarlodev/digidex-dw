@@ -72,7 +72,7 @@ async function carregarDigimonsAPI() {
 
         renderizarDigimons(fonteDigimons);
 
-        textoPagina.textContent = `Página ${paginaAtual + 1}`;
+        textoPagina.textContent = `${paginaAtual + 1}`;
 
         botaoAnterior.disabled = paginaAtual === 0;
         botaoProxima.disabled = paginaAtual >= totalPaginas - 1;

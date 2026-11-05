@@ -21,10 +21,20 @@
 
 /* ==================== BODY ==================== */
 
+body {
+    background-color: rgb(234, 246, 255);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .container-body {
     width: 100%;
-    min-height: 100vh;
-    background-color: rgb(234, 246, 255);
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: start;
@@ -136,6 +146,33 @@
     margin-top: 40px;
     aspect-ratio: 1 / 1;
     object-fit: contain;
+}
+
+/* ==================== NAVEGAÇÃO ==================== */
+.paginacao {
+    margin-top: 10px;
+}
+
+.paginacao button {
+    width: 64px;
+    background: none;
+    border: none;
+}
+
+/* #pagina-atual {
+    
+} */
+
+#pagina-anterior:hover {
+    -webkit-text-stroke: 3px orange;
+    cursor: pointer;
+    color: orange;
+}
+
+#pagina-proxima:hover {
+    -webkit-text-stroke: 3px orange;
+    cursor: pointer;
+    color: orange;
 }
 
 /* ==================== RESPONSIVIDADE ==================== */

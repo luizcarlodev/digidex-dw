@@ -10,10 +10,11 @@
     <body>
         <header>
             <div class="container-header">
-                <img
-                    src="assets/logotipo/logotipo-header.png"
-                    alt="logotipo-header"
-                />
+                <a href="index.html">
+                    <img
+                        src="assets/logotipo/logotipo-header.png"
+                        alt="logotipo-header"
+                /></a>
             </div>
         </header>
 
@@ -30,24 +31,20 @@
                             />
                         </form>
                         <button id="btn-surpreenda" type="button">
-                            Me surpreenda 🎲
+                            Me surpreenda
                         </button>
                     </div>
 
                     <div id="lista-digimons"></div>
-                    <nav class="paginacao" aria-label="Paginação dos Digimons">
-                        <button id="pagina-anterior" type="button" disabled>
-                            Anterior
-                        </button>
-
-                        <span id="pagina-atual">Página 1</span>
-
-                        <button id="pagina-proxima" type="button">
-                            Próxima
-                        </button>
-                    </nav>
                 </div>
             </div>
+            <nav class="paginacao" aria-label="Navegar entre Digimons">
+                <button id="pagina-anterior" type="button" disabled>
+                    &lt;
+                </button>
+                <span id="pagina-atual">1</span>
+                <button id="pagina-proxima" type="button">&gt;</button>
+            </nav>
         </main>
 
         <footer>

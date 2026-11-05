@@ -8,6 +8,12 @@ body {
     background-color: rgb(234, 246, 255);
     font-family: "Chakra Petch", sans-serif;
     color: rgb(1, 92, 150);
+    font-style: italic;
+    font-weight: 700;
+    color: white;
+    -webkit-text-stroke: 3px rgb(6, 59, 92);
+    paint-order: stroke fill;
+    margin-left: 10px;
 }
 
 /* ==================== HEADER ==================== */
@@ -30,7 +36,7 @@ body {
 
 main {
     width: 100%;
-    min-height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column; /* card em cima, navegação embaixo */
     align-items: center;
@@ -49,6 +55,16 @@ main {
 
 /* ==================== SEÇÕES DO CARD ==================== */
 
+h1 {
+    font-size: 48px;
+    margin-left: 10px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+/* HEADER */
 .SHeader {
     display: flex;
     justify-content: space-between;
@@ -57,36 +73,28 @@ main {
     border-bottom: 2px solid rgb(1, 92, 150);
 }
 
-#nome {
-    font-style: italic;
-    font-weight: 700;
-    color: rgb(217, 250, 255);
-    -webkit-text-stroke: 3px rgb(6, 59, 92);
-    paint-order: stroke fill;
-    margin-left: 10px;
-}
-
 #numero {
-    font-style: italic;
-    font-weight: 700;
-    color: rgb(217, 250, 255);
-    -webkit-text-stroke: 3px rgb(6, 59, 92);
-    paint-order: stroke fill;
+    font-size: 32px;
     margin-right: 10px;
 }
 
+/* INFOS */
 .SInfos {
     display: flex;
     width: 100%;
     border-bottom: 2px solid rgb(1, 92, 150);
+    padding-right: 10px;
 }
 
 .SInfos img {
     border: 2px solid rgb(1, 92, 150);
+    height: 200px;
+    margin: 10px;
 }
 
 .SInfos dl {
     width: 100%;
+    margin-top: 10px;
 }
 
 .SInfos dl div {
@@ -98,31 +106,84 @@ main {
 .SInfos dt {
     font-weight: bold;
     text-transform: capitalize;
+    margin-bottom: 10px;
 }
 
+.SInfos dd {
+    font-size: 12px;
+    -webkit-text-stroke: 0;
+    paint-order: normal;
+    font-style: normal;
+    font-weight: 400;
+    color: rgb(6, 59, 92);
+}
+
+/* DESCRIÇÃO */
 .SDescricao {
     width: 100%;
     border-bottom: 2px solid rgb(1, 92, 150);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
+.SDescricao p {
+    font-size: 12px;
+    -webkit-text-stroke: 0;
+    paint-order: normal;
+    font-style: normal;
+    font-weight: 400;
+    color: rgb(6, 59, 92);
+}
+
+/* SKILLS */
 .SSkills {
     width: 100%;
     border-bottom: 2px solid rgb(1, 92, 150);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 .SSkills ul {
     list-style: none;
 }
 
+.SSkills strong {
+    font-size: 18px;
+}
+
+.SSkills p {
+    font-size: 12px;
+    -webkit-text-stroke: 0;
+    paint-order: normal;
+    font-style: normal;
+    font-weight: 400;
+    color: rgb(6, 59, 92);
+}
+
 .SBtn-index {
     width: 100%;
+    margin: 10px 0;
 }
 
 .btn-voltar {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.btn-voltar:hover {
+    -webkit-text-stroke: 3px orange;
 }
 
 /* ==================== NAVEGAÇÃO ==================== */
+.navegacao {
+    margin-top: 10px;
+}
 
 .navegacao button {
     width: 64px;
@@ -133,6 +194,18 @@ main {
 /* #id-atual {
     
 } */
+
+#btn-anterior:hover {
+    -webkit-text-stroke: 3px orange;
+    cursor: pointer;
+    color: orange;
+}
+
+#btn-proximo:hover {
+    -webkit-text-stroke: 3px orange;
+    cursor: pointer;
+    color: orange;
+}
 
 /* ==================== FOOTER ==================== */
 
