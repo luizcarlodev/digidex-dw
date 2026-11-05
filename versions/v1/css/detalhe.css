@@ -6,6 +6,8 @@
 
 body {
     background-color: rgb(234, 246, 255);
+    font-family: "Chakra Petch", sans-serif;
+    color: rgb(1, 92, 150);
 }
 
 /* ==================== HEADER ==================== */
@@ -56,7 +58,6 @@ main {
 }
 
 #nome {
-    font-family: "Chakra Petch", sans-serif;
     font-style: italic;
     font-weight: 700;
     color: rgb(217, 250, 255);
@@ -66,7 +67,6 @@ main {
 }
 
 #numero {
-    font-family: "Chakra Petch", sans-serif;
     font-style: italic;
     font-weight: 700;
     color: rgb(217, 250, 255);
