@@ -13,7 +13,7 @@ body {
     color: white;
     -webkit-text-stroke: 3px rgb(6, 59, 92);
     paint-order: stroke fill;
-    margin-left: 10px;
+    text-align: justify;
 }
 
 /* ==================== HEADER ==================== */
@@ -205,6 +205,90 @@ h2 {
     -webkit-text-stroke: 3px orange;
     cursor: pointer;
     color: orange;
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+/* Tablet */
+
+@media (max-width: 1024px) {
+    .SInfos dl {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .SInfos dl div {
+        flex-direction: column;
+    }
+
+    .SInfos dt {
+        margin-bottom: 0;
+    }
+    .SInfos dd {
+        margin-bottom: 10px;
+    }
+
+    .container-footer p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 812px) {
+    .SInfos dl {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .SInfos dl div {
+        flex-direction: column;
+    }
+
+    .SInfos dt {
+        margin-bottom: 0;
+    }
+    .SInfos dd {
+        margin-bottom: 10px;
+    }
+
+    .container-footer p {
+        font-size: 12px;
+    }
+}
+
+/* Celular */
+
+@media (max-width: 600px) {
+    .container-header img {
+        height: 250px;
+    }
+    .SInfos {
+        flex-direction: column;
+        padding-right: 20px;
+    }
+
+    .SInfos img {
+        height: 100px;
+        width: 100px;
+    }
+    .SInfos dl {
+        margin-left: 10px;
+        margin-top: 0;
+    }
+
+    .SInfos dl div {
+        flex-direction: column;
+    }
+
+    .SInfos dt {
+        margin-bottom: 0;
+    }
+    .SInfos dd {
+        margin-bottom: 10px;
+    }
+
+    .container-footer p {
+        font-size: 12px;
+    }
 }
 
 /* ==================== FOOTER ==================== */

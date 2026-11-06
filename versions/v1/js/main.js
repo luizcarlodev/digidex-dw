@@ -4,7 +4,7 @@ const btnSurpreenda = document.querySelector("#btn-surpreenda");
 let fonteDigimons = [];
 
 let paginaAtual = 0;
-const tamanhoPagina = 20;
+const tamanhoPagina = 24;
 let totalPaginas = 1;
 let totalDigimons = 1000;
 let termoBusca = "";
