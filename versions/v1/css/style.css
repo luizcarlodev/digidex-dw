@@ -44,7 +44,7 @@ main {
 .container-conteudo {
     width: 80%;
     min-height: auto;
-    margin: 100px 0;
+    margin: 100px 0 20px;
     border: 2px solid rgb(1, 92, 150);
 }
 
@@ -198,6 +198,7 @@ nav {
 
 .paginacao {
     margin-bottom: 10px;
+    padding: 10px 0 20px;
 }
 
 .paginacao button {
