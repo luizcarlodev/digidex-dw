@@ -44,7 +44,7 @@ main {
 .container-conteudo {
     width: 80%;
     min-height: auto;
-    margin: 100px 0 20px;
+    margin: 80px 0 20px;
     border: 2px solid rgb(1, 92, 150);
 }
 
@@ -193,7 +193,6 @@ nav {
     color: white;
     -webkit-text-stroke: 3px rgb(6, 59, 92);
     paint-order: stroke fill;
-    margin-left: 10px;
 }
 
 .paginacao {
