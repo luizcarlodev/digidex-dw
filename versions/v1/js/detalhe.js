@@ -21,8 +21,7 @@ async function buscarDigimon(id) {
 function renderizarDetalhe(digimon) {
     el("nome").textContent = digimon.name;
     el("numero").textContent = `#${String(digimon.id).padStart(3, "0")}`;
-    el("id-atual").textContent = digimon.id;
-
+    el("id-atual").textContent = `ID ${digimon.id}`;
     el("imagem").src = digimon.images?.[0]?.href ?? "";
     el("imagem").alt = digimon.name;
 

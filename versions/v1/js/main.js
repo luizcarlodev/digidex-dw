@@ -8,28 +8,65 @@ const tamanhoPagina = 24;
 let totalPaginas = 1;
 let totalDigimons = 1000;
 let termoBusca = "";
+let ordenarPor = "id";
+const btnOrdem = document.querySelector("#btn-ordem");
 
 const botaoAnterior = document.querySelector("#pagina-anterior");
 const botaoProxima = document.querySelector("#pagina-proxima");
 const textoPagina = document.querySelector("#pagina-atual");
 
+console.log(
+    bubbleSort(
+        [
+            { id: 3, name: "B" },
+            { id: 1, name: "C" },
+            { id: 2, name: "A" },
+        ],
+        "name",
+    ),
+);
+
+function bubbleSort(lista, campo) {
+    const arr = [...lista]; // cópia, pra não mexer no original
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+            const valorA = arr[j][campo];
+            const valorB = arr[j + 1][campo];
+
+            const trocar =
+                typeof valorA === "string"
+                    ? valorA.localeCompare(valorB) > 0
+                    : valorA > valorB;
+
+            if (trocar) {
+                const temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    return arr;
+}
+
 function renderizarDigimons(listaDigimons) {
+    const ordenados = bubbleSort(listaDigimons, ordenarPor);
     lista.innerHTML = "";
 
-    listaDigimons.forEach((digimon) => {
+    ordenados.forEach((digimon) => {
         const card = document.createElement("a");
 
         card.classList.add("digimon-card");
         card.href = `detalhe.html?id=${digimon.id}`;
         card.title = digimon.name;
 
-        card.innerHTML = `
+        card.innerHTML = `            
             <img
                 src="${digimon.image}"
                 alt="${digimon.name}"
             >
 
-            <h2>${digimon.name}</h2>
+            <h2>${digimon.name} #${digimon.id} </h2>
         `;
 
         lista.appendChild(card);
@@ -73,10 +110,10 @@ async function carregarDigimonsAPI() {
 
         renderizarDigimons(fonteDigimons);
 
-        textoPagina.textContent = `${paginaAtual + 1}`;
+        textoPagina.textContent = `Página ${paginaAtual + 1}`;
 
-        botaoAnterior.disabled = paginaAtual === 0;
-        botaoProxima.disabled = paginaAtual >= totalPaginas - 1;
+        botaoAnterior.disabled = false;
+        botaoProxima.disabled = false;
     } catch (erro) {
         console.error("Não foi possível carregar a API:", erro);
         lista.innerHTML = "<p>Não foi possível carregar os Digimons.</p>";
@@ -139,23 +176,28 @@ async function buscarDigimonPorId(id) {
 botaoAnterior.addEventListener("click", () => {
     if (paginaAtual > 0) {
         paginaAtual--;
+    } else {
+        paginaAtual = totalPaginas - 1; // volta pra última
+    }
 
-        if (termoBusca !== "") {
-            buscarDigimonsAPI(termoBusca);
-        } else {
-            carregarDigimonsAPI();
-        }
+    if (termoBusca !== "") {
+        buscarDigimonsAPI(termoBusca);
+    } else {
+        carregarDigimonsAPI();
     }
 });
 
 botaoProxima.addEventListener("click", () => {
     if (paginaAtual < totalPaginas - 1) {
         paginaAtual++;
-        if (termoBusca !== "") {
-            buscarDigimonsAPI(termoBusca);
-        } else {
-            carregarDigimonsAPI();
-        }
+    } else {
+        paginaAtual = 0; // volta pra primeira
+    }
+
+    if (termoBusca !== "") {
+        buscarDigimonsAPI(termoBusca);
+    } else {
+        carregarDigimonsAPI();
     }
 });
 
@@ -181,3 +223,10 @@ async function sortearDigimon() {
 }
 
 btnSurpreenda.addEventListener("click", sortearDigimon);
+
+btnOrdem.addEventListener("click", () => {
+    ordenarPor = ordenarPor === "id" ? "name" : "id";
+    btnOrdem.textContent =
+        ordenarPor === "id" ? "Ordenar por ID" : "Ordenar por Nome";
+    renderizarDigimons(fonteDigimons);
+});

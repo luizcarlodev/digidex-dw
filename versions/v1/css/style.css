@@ -105,7 +105,8 @@ main {
     height: 30px;
 }
 
-#btn-surpreenda {
+#btn-surpreenda,
+#btn-ordem {
     background: none;
     border: none;
     font-family: "Chakra Petch", sans-serif;
@@ -119,7 +120,8 @@ main {
     width: 400px;
 }
 
-#btn-surpreenda:hover {
+#btn-surpreenda:hover,
+#btn-ordem:hover {
     -webkit-text-stroke: 3px orange;
     cursor: pointer;
 }
@@ -150,7 +152,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
     text-decoration: none;
     text-align: center;
     color: rgb(11, 47, 74);
@@ -163,9 +165,12 @@ main {
     border: 2px solid orange;
 }
 
+/* #digimon-id {
+} */
+
 .digimon-card img {
     width: 70%;
-    margin-top: 40px;
+    margin-top: 20px;
     aspect-ratio: 1 / 1;
     object-fit: contain;
 }
