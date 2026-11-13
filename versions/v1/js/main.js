@@ -60,13 +60,15 @@ function renderizarDigimons(listaDigimons) {
         card.href = `detalhe.html?id=${digimon.id}`;
         card.title = digimon.name;
 
-        card.innerHTML = `            
+        card.innerHTML = `        
+            <span class="digimon-id">#${digimon.id}</span>
+
             <img
                 src="${digimon.image}"
                 alt="${digimon.name}"
             >
 
-            <h2>${digimon.name} #${digimon.id} </h2>
+            <h2>${digimon.name}</h2>
         `;
 
         lista.appendChild(card);
@@ -227,6 +229,6 @@ btnSurpreenda.addEventListener("click", sortearDigimon);
 btnOrdem.addEventListener("click", () => {
     ordenarPor = ordenarPor === "id" ? "name" : "id";
     btnOrdem.textContent =
-        ordenarPor === "id" ? "Ordenar por ID" : "Ordenar por Nome";
+        ordenarPor === "id" ? "Ordenar por Nome" : "Ordenar por ID";
     renderizarDigimons(fonteDigimons);
 });
