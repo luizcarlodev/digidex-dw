@@ -38,7 +38,20 @@ function renderizarDetalhe(digimon) {
     const habilidades = el("habilidades");
     habilidades.innerHTML = "";
 
-    (digimon.skills ?? []).forEach((s) => {
+    const listaHabilidades = digimon.skills ?? [];
+
+    if (listaHabilidades.length === 0) {
+        const vazio = document.createElement("li");
+        const textoVazio = document.createElement("p");
+
+        textoVazio.textContent = "Sem habilidades.";
+
+        vazio.appendChild(textoVazio);
+        habilidades.appendChild(vazio);
+        return;
+    }
+
+    listaHabilidades.forEach((s) => {
         const item = document.createElement("li");
         const titulo = document.createElement("strong");
         const texto = document.createElement("p");
