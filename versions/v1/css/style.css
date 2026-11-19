@@ -7,16 +7,32 @@
 /* ==================== HEADER ==================== */
 
 .container-header {
+    /* a altura do cabeçalho encolhe junto com a tela (mín. 90px, máx. 150px) */
+    --altura-header: clamp(90px, 22vw, 150px);
     width: 100%;
-    height: 150px;
+    height: var(--altura-header);
     background-color: rgb(6, 59, 92);
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
+.container-header a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* o logotipo mantém a proporção de antes (2x a altura do header)
+   e nunca passa da largura da tela */
 .container-header img {
-    height: 300px;
+    height: calc(var(--altura-header) * 2);
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 /* ==================== BODY ==================== */
@@ -44,7 +60,7 @@ main {
 .container-conteudo {
     width: 80%;
     min-height: auto;
-    margin: 80px 0 20px;
+    margin: clamp(30px, 8vw, 80px) 0 20px;
     border: 2px solid rgb(1, 92, 150);
 }
 
@@ -249,8 +265,29 @@ nav {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
+    /* barra de ferramentas: busca em cima, botões embaixo */
+    .container-ferramentas {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px 10px;
+    }
+
+    .container-ferramentas form {
+        flex: 1 1 100%;
+        height: 40px;
+    }
+
     .search-input {
-        width: 70%;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    #btn-surpreenda,
+    #btn-ordem {
+        width: auto;
+        margin-left: 0;
+        padding: 0 10px;
     }
 }
 
@@ -261,8 +298,22 @@ nav {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .search-input {
-        width: 70%;
+    .container-conteudo {
+        width: 94%;
+    }
+
+    .digimon-id {
+        font-size: 16px;
+    }
+
+    .digimon-card h2 {
+        font-size: 18px;
+    }
+
+    .container-footer p {
+        font-size: 12px;
+        text-align: center;
+        padding: 0 10px;
     }
 }
 
@@ -270,14 +321,14 @@ nav {
 
 .container-footer {
     width: 100%;
-    height: 100px;
+    min-height: 100px;
     display: flex;
     justify-content: center;
 }
 
 .conteudo-footer {
     width: 100%;
-    height: 100%;
+    min-height: 100px;
     background-color: rgb(6, 59, 92);
     display: flex;
     justify-content: center;

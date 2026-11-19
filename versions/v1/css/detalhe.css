@@ -22,17 +22,33 @@ body {
 /* ==================== HEADER ==================== */
 
 .container-header {
+    /* a altura do cabeçalho encolhe junto com a tela (mín. 90px, máx. 150px) */
+    --altura-header: clamp(90px, 22vw, 150px);
     width: 100%;
-    height: 150px;
+    height: var(--altura-header);
     background-color: rgb(6, 59, 92);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 80px;
+    overflow: hidden;
+    margin-bottom: clamp(30px, 8vw, 80px);
 }
 
+.container-header a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* o logotipo mantém a proporção de antes (2x a altura do header)
+   e nunca passa da largura da tela */
 .container-header img {
-    height: 300px;
+    height: calc(var(--altura-header) * 2);
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 /* ==================== PÁGINA (antigo .container__body) ==================== */
@@ -60,26 +76,33 @@ main {
 /* ==================== SEÇÕES DO CARD ==================== */
 
 h1 {
-    font-size: 48px;
+    font-size: clamp(26px, 6vw, 48px);
     margin-left: 10px;
+    flex: 1 1 0;
+    min-width: 0; /* deixa o nome quebrar em vez de empurrar o #número pra fora */
+    overflow-wrap: anywhere;
+    text-align: left;
 }
 
 h2 {
-    font-size: 32px;
+    font-size: clamp(22px, 4vw, 32px);
 }
 
 /* HEADER */
 .SHeader {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
+    gap: 10px;
     border-bottom: 2px solid rgb(1, 92, 150);
 }
 
 #numero {
-    font-size: 32px;
-    margin-right: 10px;
+    font-size: clamp(18px, 4vw, 32px);
+    margin: 0 10px;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 /* INFOS */
@@ -93,11 +116,14 @@ h2 {
 .SInfos img {
     border: 2px solid rgb(1, 92, 150);
     height: 200px;
+    max-width: 45%;
+    object-fit: contain;
     margin: 10px;
 }
 
 .SInfos dl {
     width: 100%;
+    min-width: 0;
     margin-top: 10px;
 }
 
@@ -114,6 +140,7 @@ h2 {
 }
 
 .SInfos dd {
+    overflow-wrap: anywhere;
     font-size: 12px;
     -webkit-text-stroke: 0;
     paint-order: normal;
@@ -241,6 +268,14 @@ h2 {
 }
 
 @media (max-width: 812px) {
+    .container__body {
+        width: 90%;
+    }
+
+    .SInfos img {
+        height: 160px;
+    }
+
     .SInfos dl {
         margin-left: 0;
         margin-top: 10px;
@@ -265,9 +300,22 @@ h2 {
 /* Celular */
 
 @media (max-width: 600px) {
-    .container-header img {
-        height: 250px;
+    body {
+        text-align: left;
     }
+
+    .container__body {
+        width: 94%;
+    }
+
+    /* contorno do texto mais fino pra não "engolir" as letras pequenas */
+    h1,
+    h2,
+    #numero,
+    .SSkills strong {
+        -webkit-text-stroke: 2px rgb(6, 59, 92);
+    }
+
     .SInfos {
         flex-direction: column;
         padding-right: 20px;
@@ -276,6 +324,7 @@ h2 {
     .SInfos img {
         height: 100px;
         width: 100px;
+        max-width: none;
     }
     .SInfos dl {
         margin-left: 10px;
@@ -295,20 +344,22 @@ h2 {
 
     .container-footer p {
         font-size: 12px;
+        text-align: center;
+        padding: 0 10px;
     }
 }
 
 /* ==================== FOOTER ==================== */
 .container-footer {
     width: 100%;
-    height: 100px;
+    min-height: 100px;
     display: flex;
     justify-content: center;
 }
 
 .conteudo-footer {
     width: 100%;
-    height: 100%;
+    min-height: 100px;
     background-color: rgb(6, 59, 92);
     display: flex;
     justify-content: center;
