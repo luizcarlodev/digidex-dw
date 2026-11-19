@@ -195,16 +195,95 @@ main {
 }
 
 .digimon-card h2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    overflow-wrap: anywhere;
-    width: 100%;
+    width: calc(100% - 16px);
+    margin: 0 8px;
     line-height: 1.2;
-    min-height: 2.4em;
-    padding: 0 8px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* ---------- letreiro (efeito "display de ônibus") ----------
+   Nomes que cabem no card ficam parados e centralizados.
+   Nomes que não cabem ganham a classe .rolando (via JS) e passam
+   da direita para a esquerda em loop contínuo. */
+
+.digimon-card .letreiro {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* a cópia só aparece quando o nome está rolando: é ela que
+   "fecha" o loop, entrando pela direita enquanto o original sai */
+.digimon-card .letreiro .copia {
+    display: none;
+}
+
+.digimon-card h2.rolando {
+    text-align: left;
+    /* esmaece as bordas pra o texto não "cortar seco" */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 8%,
+        black 92%,
+        transparent
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 8%,
+        black 92%,
+        transparent
+    );
+}
+
+.digimon-card h2.rolando .letreiro {
+    /* --deslocamento e --duracao são definidos pelo JS */
+    animation: letreiro var(--duracao, 8s) linear infinite;
+}
+
+/* espaço entre o fim do nome e o começo da repetição */
+.digimon-card h2.rolando .letreiro .texto,
+.digimon-card h2.rolando .letreiro .copia {
+    display: inline-block;
+    padding-right: 2em;
+}
+
+/* pausa curta no início (0–15%) pra dar tempo de ler o começo do nome */
+@keyframes letreiro {
+    0%,
+    15% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-1 * var(--deslocamento, 100px)));
+    }
+}
+
+/* quem prefere menos movimento recebe reticências no lugar da animação */
+@media (prefers-reduced-motion: reduce) {
+    .digimon-card h2.rolando .letreiro {
+        animation: none;
+    }
+
+    .digimon-card h2.rolando {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .digimon-card h2.rolando .letreiro {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .digimon-card h2.rolando .letreiro .texto {
+        padding-right: 0;
+    }
+
+    .digimon-card h2.rolando .letreiro .copia {
+        display: none;
+    }
 }
 
 /* ==================== NAVEGAÇÃO ==================== */

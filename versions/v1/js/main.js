@@ -68,12 +68,53 @@ function renderizarDigimons(listaDigimons) {
                 alt="${digimon.name}"
             >
 
-            <h2>${digimon.name}</h2>
+            <h2>
+                <span class="letreiro">
+                    <span class="texto">${digimon.name}</span>
+                    <span class="copia" aria-hidden="true">${digimon.name}</span>
+                </span>
+            </h2>
         `;
 
         lista.appendChild(card);
     });
+
+    aplicarLetreiro();
 }
+
+// ---------- letreiro nos nomes (efeito "display de ônibus") ----------
+
+const VELOCIDADE_LETREIRO = 40; // px por segundo
+
+function aplicarLetreiro() {
+    lista.querySelectorAll(".digimon-card h2").forEach((h2) => {
+        const texto = h2.querySelector(".texto");
+
+        // volta ao estado normal antes de medir (útil no resize)
+        h2.classList.remove("rolando");
+
+        if (texto.offsetWidth <= h2.clientWidth) return; // cabe: fica parado
+
+        h2.classList.add("rolando");
+
+        // offsetWidth já inclui o espaço extra entre as repetições
+        const deslocamento = texto.offsetWidth;
+        const duracao = deslocamento / VELOCIDADE_LETREIRO / 0.85; // 0.85 = tirando a pausa inicial
+
+        h2.style.setProperty("--deslocamento", `${deslocamento}px`);
+        h2.style.setProperty("--duracao", `${duracao}s`);
+    });
+}
+
+// a largura dos cards muda com a tela, então mede de novo ao redimensionar
+let timerResize;
+window.addEventListener("resize", () => {
+    clearTimeout(timerResize);
+    timerResize = setTimeout(aplicarLetreiro, 150);
+});
+
+// se a fonte carregar depois do primeiro render, as larguras mudam
+document.fonts?.ready.then(aplicarLetreiro);
 
 carregarDigimonsAPI();
 
